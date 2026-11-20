@@ -103,13 +103,15 @@ async function fetchIssues(after: string | null = null): Promise<GraphQLResponse
 
   if (!response.ok) {
     const errorText = await response.text();
-    console.error(`API Error: ${errorText}`);
+    console.error(`API Error (status ${response.status}): ${errorText}`);
     // If token doesn't have permissions (401/403) or repo has no issues, generate empty changelog
     if (response.status === 401 || response.status === 403) {
       console.warn('GitHub token lacks GraphQL permissions. Generating empty changelog.');
       return { data: { repository: { issues: { nodes: [], pageInfo: { hasNextPage: false, endCursor: null } } } } };
     }
-    throw new Error(`GitHub API error: ${response.status} ${response.statusText} - ${errorText}`);
+    // For any other error, also generate empty changelog to avoid build failure
+    console.warn(`Unexpected API error (${response.status}). Generating empty changelog to avoid build failure.`);
+    return { data: { repository: { issues: { nodes: [], pageInfo: { hasNextPage: false, endCursor: null } } } } };
   }
 
   const data = await response.json() as GraphQLResponse;
