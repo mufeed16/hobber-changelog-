@@ -35,9 +35,13 @@ interface GraphQLResponse {
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPOSITORY = process.env.GITHUB_REPOSITORY;
 
-console.log('Debug: GITHUB_TOKEN exists:', !!GITHUB_TOKEN);
-console.log('Debug: GITHUB_TOKEN length:', GITHUB_TOKEN?.length || 0);
-console.log('Debug: GITHUB_REPOSITORY:', GITHUB_REPOSITORY);
+console.log('=== DEBUG INFO ===');
+console.log('GITHUB_TOKEN exists:', !!GITHUB_TOKEN);
+console.log('GITHUB_TOKEN length:', GITHUB_TOKEN?.length || 0);
+console.log('GITHUB_TOKEN first 10 chars:', GITHUB_TOKEN?.substring(0, 10) || 'N/A');
+console.log('GITHUB_REPOSITORY:', GITHUB_REPOSITORY);
+console.log('All env vars:', Object.keys(process.env).filter(k => k.includes('GITHUB')).sort());
+console.log('==================');
 
 if (!GITHUB_TOKEN) {
   console.error('Error: GITHUB_TOKEN environment variable is required');
