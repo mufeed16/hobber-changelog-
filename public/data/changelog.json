@@ -1,0 +1,75 @@
+{
+  "repository": {
+    "owner": "hobber-advertising",
+    "name": "hobber-changelog",
+    "url": "https://github.com/hobber-advertising/hobber-changelog"
+  },
+  "generatedAt": "2026-11-20T10:30:00.000Z",
+  "totalIssues": 5,
+  "completedCount": 3,
+  "notPlannedCount": 2,
+  "monthlyGroups": [
+    {
+      "month": "November",
+      "year": 2026,
+      "issues": [
+        {
+          "number": 12,
+          "title": "Add dark mode support for changelog view",
+          "url": "https://github.com/hobber-advertising/hobber-changelog/issues/12",
+          "author": "mufeed",
+          "labels": ["enhancement", "frontend"],
+          "closedAt": "2026-11-18T14:30:00Z",
+          "closingReason": "COMPLETED",
+          "state": "CLOSED"
+        },
+        {
+          "number": 11,
+          "title": "Fix pagination for repositories with 100+ issues",
+          "url": "https://github.com/hobber-advertising/hobber-changelog/issues/11",
+          "author": "mufeed",
+          "labels": ["bug", "backend"],
+          "closedAt": "2026-11-15T09:15:00Z",
+          "closingReason": "COMPLETED",
+          "state": "CLOSED"
+        },
+        {
+          "number": 10,
+          "title": "Implement GraphQL cursor-based pagination",
+          "url": "https://github.com/hobber-advertising/hobber-changelog/issues/10",
+          "author": null,
+          "labels": ["backend", "graphql"],
+          "closedAt": "2026-11-10T16:45:00Z",
+          "closingReason": "COMPLETED",
+          "state": "CLOSED"
+        }
+      ]
+    },
+    {
+      "month": "October",
+      "year": 2026,
+      "issues": [
+        {
+          "number": 8,
+          "title": "Add support for custom repository configuration",
+          "url": "https://github.com/hobber-advertising/hobber-changelog/issues/8",
+          "author": "contributor",
+          "labels": ["feature", "config"],
+          "closedAt": "2026-10-22T11:20:00Z",
+          "closingReason": "NOT_PLANNED",
+          "state": "CLOSED"
+        },
+        {
+          "number": 5,
+          "title": "Create initial Angular project structure",
+          "url": "https://github.com/hobber-advertising/hobber-changelog/issues/5",
+          "author": "mufeed",
+          "labels": ["setup", "frontend"],
+          "closedAt": "2026-10-05T10:00:00Z",
+          "closingReason": "NOT_PLANNED",
+          "state": "CLOSED"
+        }
+      ]
+    }
+  ]
+}
