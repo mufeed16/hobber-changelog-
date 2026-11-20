@@ -46,7 +46,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Build Angular application
-        run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
+        run: npx ng build --base-href "/${{ github.event.repository.name }}/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
