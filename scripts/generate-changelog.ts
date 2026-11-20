@@ -124,11 +124,19 @@ async function fetchAllIssues(owner: string, repo: string, token: string): Promi
       throw new Error(data.errors.map(e => e.message).join(', '));
     }
 
-    if (!data.data?.repository?.issues) {
-      throw new Error('No issues data returned from GitHub');
+    if (!data.data?.repository) {
+      throw new Error('Repository not found or no access');
+    }
+    if (!data.data.repository.issues) {
+      console.log('No issues data returned from GitHub (possibly no closed issues)');
+      return [];
     }
 
     const page = data.data.repository.issues;
+    if (!page) {
+      console.log('No closed issues found');
+      break;
+    }
     allIssues.push(...page.nodes);
     hasNextPage = page.pageInfo.hasNextPage;
     cursor = page.pageInfo.endCursor;

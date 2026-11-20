@@ -23,7 +23,12 @@
       "Bash(grep -E \"^\\\\s+\"\"path\"\": \"\"[^/]+\"\"$)",
       "Bash(git checkout:*)",
       "Bash(grep -E \"^\\\\s+\"\"path\"\": \"\"[^h][^/]+\"\"$\")",
-      "Bash(gh run:*)"
+      "Bash(gh run:*)",
+      "Read(//tmp/**)",
+      "Bash(mv hobber-changelog/* .)",
+      "Bash(mv hobber-changelog/.[^.]* .)",
+      "Bash(rm -rf hobber-changelog)",
+      "Bash(GITHUB_REPOSITORY_OWNER=mufeed16 GITHUB_REPOSITORY_NAME=hobber-changelog- GITHUB_TOKEN=test npx tsx scripts/generate-changelog.ts)"
     ]
   }
 }
