@@ -79,6 +79,8 @@ const GRAPHQL_QUERY = `
 async function fetchIssues(after: string | null = null): Promise<GraphQLResponse> {
   const variables = { owner, name: repo, after };
 
+  console.log(`Fetching issues for ${owner}/${repo}...`);
+
   const response = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
@@ -89,17 +91,22 @@ async function fetchIssues(after: string | null = null): Promise<GraphQLResponse
     body: JSON.stringify({ query: GRAPHQL_QUERY, variables }),
   });
 
+  console.log(`GitHub API response: ${response.status} ${response.statusText}`);
+
   if (!response.ok) {
     const errorText = await response.text();
+    console.error(`API Error: ${errorText}`);
     throw new Error(`GitHub API error: ${response.status} ${response.statusText} - ${errorText}`);
   }
 
   const data = await response.json() as GraphQLResponse;
 
   if (data.errors && data.errors.length > 0) {
+    console.error(`GraphQL Errors: ${JSON.stringify(data.errors, null, 2)}`);
     throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
   }
 
+  console.log(`Issues returned: ${data.data?.repository?.issues?.nodes?.length ?? 0}`);
   return data;
 }
 
