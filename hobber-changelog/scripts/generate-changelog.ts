@@ -113,6 +113,11 @@ async function fetchAllIssues(owner: string, repo: string, token: string): Promi
       body: JSON.stringify({ query, variables }),
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`GitHub API error: ${response.status} ${response.statusText} - ${errorText}`);
+    }
+
     const data: GitHubResponse = await response.json();
 
     if (data.errors && data.errors.length > 0) {

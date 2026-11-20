@@ -6,7 +6,24 @@
       "Bash(npm run:*)",
       "Bash(cd:*)",
       "Bash(GITHUB_REPOSITORY_OWNER=test GITHUB_REPOSITORY_NAME=test GITHUB_TOKEN=test npm run generate:changelog)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh workflow:*)",
+      "Bash(curl -s -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer $GITHUB_TOKEN\" \"https://api.github.com/repos/mufeed16/hobber-changelog/actions/runs?branch=main\")",
+      "Bash(curl -s \"https://api.github.com/repos/mufeed16/hobber-changelog/actions/runs?branch=main\")",
+      "Bash(curl -s \"https://api.github.com/repos/mufeed16/hobber-changelog/actions/runs?branch=main&per_page=1\")",
+      "Bash(python3 -c \"import sys, json; data=json.load\\(sys.stdin\\); run=data[''''workflow_runs''''][0]; print\\(f''''Run ID: {run[\"\"id\"\"]}''''\\); print\\(f''''Status: {run[\"\"status\"\"]}''''\\); print\\(f''''Conclusion: {run[\"\"conclusion\"\"]}''''\\); print\\(f''''URL: {run[\"\"html_url\"\"]}''''\\)\")",
+      "Bash(curl -s \"https://api.github.com/repos/mufeed16/hobber-changelog/actions/runs?branch=main&per_page=5\")",
+      "Bash(curl:*)",
+      "Bash(gh repo:*)",
+      "Bash(git remote:*)",
+      "Bash(echo:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(grep -E \"^\\\\s+\"\"path\"\": \"\"[^/]+\"\"$)",
+      "Bash(git checkout:*)",
+      "Bash(grep -E \"^\\\\s+\"\"path\"\": \"\"[^h][^/]+\"\"$\")",
+      "Bash(gh run:*)"
     ]
   }
 }
