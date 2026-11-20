@@ -1,0 +1,89 @@
+<div class="changelog-container">
+  <header class="changelog-header">
+    <h1>Changelog</h1>
+    <p class="repo-info">Closed issues grouped by month</p>
+    @if (generatedAt()) {
+      <p class="generated-at">Generated: {{ formatGeneratedAt(generatedAt()) }}</p>
+    }
+  </header>
+
+  @if (isLoading()) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading changelog...</p>
+    </div>
+  } @else if (error()) {
+    <div class="error">
+      <p>Error: {{ error() }}</p>
+      <button (click)="loadChangelog()">Retry</button>
+    </div>
+  } @else if (!hasIssues()) {
+    <div class="no-issues">
+      <p>No closed issues found in this repository.</p>
+    </div>
+  } @else {
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-value">{{ totalClosed() }}</span>
+        <span class="stat-label">Total Closed</span>
+      </div>
+      <div class="stat completed">
+        <span class="stat-value">{{ totalCompleted() }}</span>
+        <span class="stat-label">Completed</span>
+      </div>
+      <div class="stat not-planned">
+        <span class="stat-value">{{ totalNotPlanned() }}</span>
+        <span class="stat-label">Not Planned</span>
+      </div>
+    </div>
+
+    <main class="changelog-content">
+      @for (month of groupedByMonth(); track month.monthKey) {
+        <section class="month-section">
+          <h2 class="month-header">{{ month.month }}</h2>
+          <ul class="issues-list">
+            @for (issue of month.issues; track issue.number) {
+              <li class="issue-item">
+                <article class="issue-card" [class]="'issue-' + getStateReasonClass(issue.stateReason)">
+                  <header class="issue-header">
+                    <a class="issue-number" [href]="issue.url" target="_blank" rel="noopener noreferrer">
+                      #{{ issue.number }}
+                    </a>
+                    <span class="issue-state" [class]="'state-' + getStateReasonClass(issue.stateReason)">
+                      {{ getStateReasonLabel(issue.stateReason) }}
+                    </span>
+                  </header>
+                  <h3 class="issue-title">
+                    <a [href]="issue.url" target="_blank" rel="noopener noreferrer">{{ issue.title }}</a>
+                  </h3>
+                  <div class="issue-meta">
+                    @if (issue.labels.length > 0) {
+                      <div class="issue-labels">
+                        @for (label of issue.labels; track label.name) {
+                          <span class="label" [style.background-color]="'#' + label.color" [style.color]="getLabelTextColor(label.color)">
+                            {{ label.name }}
+                          </span>
+                        }
+                      </div>
+                    }
+                    <div class="issue-author">
+                      @if (issue.author.avatarUrl) {
+                        <img [src]="issue.author.avatarUrl" [alt]="issue.author.login" class="author-avatar" />
+                      }
+                      <a class="author-link" [href]="issue.author.url" target="_blank" rel="noopener noreferrer">
+                        @{{ issue.author.login }}
+                      </a>
+                    </div>
+                    <time class="issue-date" [attr.datetime]="issue.closedAt">
+                      Closed {{ formatDate(issue.closedAt) }}
+                    </time>
+                  </div>
+                </article>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </main>
+  }
+</div>

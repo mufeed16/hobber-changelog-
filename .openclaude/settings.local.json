@@ -1,17 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm create:*)",
-      "Bash(mv hobber-changelog/* hobber-changelog/.* .)",
-      "Bash(rmdir hobber-changelog:*)",
+      "Bash(npx -y @angular/cli@latest new hobber-changelog --standalone --routing=false --style=css --skip-git --skip-tests)",
       "Bash(npm install:*)",
       "Bash(npm run:*)",
-      "Bash(npm test:*)",
-      "Bash(npx vitest:*)",
-      "Bash(npx ng:*)",
-      "Bash(git init:*)",
-      "Bash(git add:*)",
-      "Bash(git commit -m \"feat: initial GitHub Changelog application:*)"
+      "Bash(cd:*)",
+      "Bash(GITHUB_REPOSITORY_OWNER=test GITHUB_REPOSITORY_NAME=test GITHUB_TOKEN=test npm run generate:changelog)",
+      "Bash(git add:*)"
     ]
   }
 }

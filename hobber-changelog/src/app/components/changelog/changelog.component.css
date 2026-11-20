@@ -1,0 +1,327 @@
+.changelog-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  line-height: 1.6;
+  color: #1f2937;
+}
+
+.changelog-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.changelog-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.5rem;
+}
+
+.repo-info {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.generated-at {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.error button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.error button:hover {
+  background: #b91c1c;
+}
+
+.no-issues {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.stats-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  min-width: 100px;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+}
+
+.stat.completed .stat-value {
+  color: #16a34a;
+}
+
+.stat.not-planned .stat-value {
+  color: #dc2626;
+}
+
+.month-section {
+  margin-bottom: 2rem;
+}
+
+.month-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.issues-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.issue-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.issue-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.issue-card.issue-completed {
+  border-left: 4px solid #16a34a;
+}
+
+.issue-card.issue-not-planned {
+  border-left: 4px solid #dc2626;
+}
+
+.issue-card.issue-unknown {
+  border-left: 4px solid #6b7280;
+}
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.issue-number {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.issue-number:hover {
+  text-decoration: underline;
+}
+
+.issue-state {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.issue-state.state-completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.issue-state.state-not-planned {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.issue-state.state-unknown {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.issue-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.issue-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.issue-title a:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.issue-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.issue-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.issue-author {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.author-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.author-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.author-link:hover {
+  text-decoration: underline;
+}
+
+.issue-date {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .changelog-container {
+    padding: 1rem;
+  }
+
+  .changelog-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stats-bar {
+    gap: 0.5rem;
+  }
+
+  .stat {
+    min-width: 80px;
+    padding: 0.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .issue-header {
+    gap: 0.5rem;
+  }
+
+  .issue-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
