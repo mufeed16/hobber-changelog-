@@ -35,7 +35,7 @@ jobs:
       - name: Generate changelog
         run: npm run generate-changelog
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Build Angular application
