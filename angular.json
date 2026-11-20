@@ -31,6 +31,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/hobber-changelog/",
               "budgets": [
                 {
                   "type": "initial",
